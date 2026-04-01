@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Login</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #e9ecef;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .container {
+      background: #fff;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      width: 300px;
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      background: #007bff;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #0056b3;
+    }
+    .msg {
+      text-align: center;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Login</h2>
+    <input type="email" id="email" placeholder="Enter Email" required>
+    <input type="password" id="password" placeholder="Enter Password" required>
+    <button onclick="loginUser()">Login</button>
+    <p class="msg" id="message"></p>
+    <p style="text-align:center;">Don't have an account? <a href="register.html">Register</a></p>
+  </div>
+
+  <script>
+    async function loginUser() {
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+
+      const response = await fetch("http://localhost:8080/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password })
+      });
+
+      const msg = document.getElementById("message");
+
+      if (response.status === 200) {
+        msg.innerText = "✅ Login successful!";
+        msg.style.color = "green";
+        // redirect after login
+        setTimeout(() => window.location.href = "welcome.html", 1000);
+      } else if (response.status === 401) {
+        msg.innerText = "❌ Invalid password!";
+        msg.style.color = "red";
+      } else if (response.status === 404) {
+        msg.innerText = "⚠️ User not found!";
+        msg.style.color = "red";
+      } else {
+        msg.innerText = "❌ Something went wrong!";
+        msg.style.color = "red";
+      }
+    }
+  </script>
+</body>
+</html>

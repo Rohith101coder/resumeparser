@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome Page</title>
+  <style>
+    /* Reset & Fonts */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: #fff;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 40px;
+      border-radius: 16px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+      backdrop-filter: blur(10px);
+      animation: fadeIn 1.3s ease-in-out;
+      max-width: 600px;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 1.1rem;
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 28px;
+      margin: 10px;
+      border: none;
+      border-radius: 30px;
+      background: #ff758c;
+      background: linear-gradient(to right, #ff758c, #ff7eb3);
+      color: #fff;
+      font-size: 1rem;
+      cursor: pointer;
+      text-decoration: none;
+      transition: 0.3s ease;
+    }
+
+    .btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 15px rgba(255, 118, 140, 0.4);
+    }
+
+    footer {
+      margin-top: 40px;
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2rem;
+      }
+      p {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Welcome 🎉</h1>
+    <p>
+      You’ve successfully logged in!  
+      This is your modern landing page where you can explore, manage your profile,  
+      and discover amazing content.
+    </p>
+    <a href="#" class="btn">Explore</a>
+    <a href="#" class="btn">Profile</a>
+    <a href="#" class="btn">Logout</a>
+  </div>
+
+  <footer>
+    © 2025 My Application | Designed with ❤️
+  </footer>
+</body>
+</html>

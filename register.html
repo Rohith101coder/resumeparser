@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Registration</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .container {
+      background: #fff;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      width: 300px;
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      background: #28a745;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #218838;
+    }
+    .msg {
+      text-align: center;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Register</h2>
+    <input type="email" id="email" placeholder="Enter Email" required>
+    <input type="password" id="password" placeholder="Enter Password" required>
+    <button onclick="registerUser()">Register</button>
+    <p class="msg" id="message"></p>
+    <p style="text-align:center;">Already have an account? <a href="login.html">Login</a></p>
+  </div>
+
+  <script>
+    async function registerUser() {
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+
+      const response = await fetch("http://localhost:8080/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password })
+      });
+
+      if (response.status === 201) {
+        document.getElementById("message").innerText = "✅ Registration successful!";
+        document.getElementById("message").style.color = "green";
+      } else if (response.status === 409) {
+        document.getElementById("message").innerText = "⚠️ Email already exists!";
+        document.getElementById("message").style.color = "red";
+      } else {
+        document.getElementById("message").innerText = "❌ Something went wrong!";
+        document.getElementById("message").style.color = "red";
+      }
+    }
+  </script>
+</body>
+</html>
