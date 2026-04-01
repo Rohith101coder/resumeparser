@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Upload, FileText, CheckCircle2, AlertCircle, ChevronRight, BookOpen, BrainCircuit, Activity, CheckCircle, XCircle } from 'lucide-react';
 import './App.css';
 
-const API_BASE = 'http://localhost:8080/api';
+const API_BASE = " https://unshamed-jana-gruffier.ngrok-free.dev/api";
 
 function App() {
   const [file, setFile] = useState(null);
