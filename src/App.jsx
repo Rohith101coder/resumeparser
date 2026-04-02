@@ -36,22 +36,22 @@ function App() {
     formData.append('file', file);
     formData.append('jobDescription', jdText);
 
-  //   try {
-  //     console.log("API CALL TRIGGERED");
-  //     const res = await fetch(`${API_BASE}/analyze/resume-jd`, {
-  //       method: 'POST',
-  //       body: formData,
-  //     });
+    try {
+      console.log("API CALL TRIGGERED");
+      const res = await fetch(`${API_BASE}/analyze/resume-jd`, {
+        method: 'POST',
+        body: formData,
+      });
 
-  //     if (!res.ok) throw new Error('Failed to analyze the resume.');
+      if (!res.ok) throw new Error('Failed to analyze the resume.');
       
-  //     const data = await fetchJson(res);
-  //     setResult(data);
-  //   } catch (err) {
-  //     setError(err.message || 'Error communicating with backend.');
-  //   } finally {
-  //     setAnalyzing(false);
-  //   }
+      const data = await fetchJson(res);
+      setResult(data);
+    } catch (err) {
+      setError(err.message || 'Error communicating with backend.');
+    } finally {
+      setAnalyzing(false);
+    }
    };
 
   const fetchJson = async (res) => {
