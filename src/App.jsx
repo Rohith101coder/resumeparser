@@ -37,6 +37,7 @@ function App() {
     formData.append('jobDescription', jdText);
 
     try {
+      console.log("API CALL TRIGGERED");
       const res = await fetch(`${API_BASE}/analyze/resume-jd`, {
         method: 'POST',
         body: formData,
