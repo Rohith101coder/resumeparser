@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { Upload, FileText, CheckCircle2, AlertCircle, ChevronRight, BookOpen, BrainCircuit, Activity, CheckCircle, XCircle } from 'lucide-react';
 import './App.css';
 
-const API_BASE = " https://resumeanalyser-z649.onrender.com/api";
+const API_BASE = " https://resumeanalyser-wr8c.onrender.com/api";
 
 function App() {
   const [file, setFile] = useState(null);
